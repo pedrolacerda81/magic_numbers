@@ -16,6 +16,12 @@ class App extends StatelessWidget {
 }
 
 MaterialPageRoute onGenerateRoute(RouteSettings settings) {
+  if (settings.name == '/home') {
+    return MaterialPageRoute(builder: (BuildContext context) {
+      return Home();
+    });
+  }
+
   if (settings.name == '/magic-numbers') {
     return MaterialPageRoute(builder: (BuildContext context) {
       return MagicNumbers();
