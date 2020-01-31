@@ -23,6 +23,27 @@ class Home extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            Container(
+              height: 60.0,
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0)),
+                    splashColor: Theme.of(context).primaryColor,
+                    color: Colors.white,
+                    child: Text('JOGAR!',
+                        style:
+                            TextStyle(color: Theme.of(context).primaryColor)),
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/magic-numbers');
+                    },
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
