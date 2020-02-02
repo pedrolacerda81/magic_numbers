@@ -28,6 +28,13 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings) {
       return MagicNumbers();
     });
   }
+
+  if (settings.name == '/about') {
+    return MaterialPageRoute(builder: (BuildContext context) {
+      return About();
+    });
+  }
+
   return MaterialPageRoute(builder: (BuildContext context) {
     return Home();
   });

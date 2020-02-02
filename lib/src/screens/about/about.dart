@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MagicNumbers extends StatelessWidget {
+class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class MagicNumbers extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        title: Text('Magic Numbers', style: TextStyle(color: Colors.white)),
+        title: Text('Sobre', style: TextStyle(color: Colors.white)),
       ),
       body: Container(),
     );

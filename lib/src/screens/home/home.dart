@@ -22,8 +22,8 @@ class Home extends StatelessWidget {
                 children: <Widget>[
                   Image.asset(
                     'assets/images/hat.png',
-                    height: 100.0,
-                    width: 100.0,
+                    height: 95.0,
+                    width: 95.0,
                   ),
                   SizedBox(
                     height: 10.0,
@@ -33,33 +33,91 @@ class Home extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'RugeBoogie',
-                      fontSize: 40.0,
+                      fontSize: 45.0,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              height: 60.0,
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    splashColor: Theme.of(context).primaryColor,
-                    color: Colors.white,
-                    child: Text('JOGAR!',
-                        style:
-                            TextStyle(color: Theme.of(context).primaryColor)),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/magic-numbers');
-                    },
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          splashColor: Colors.white,
+                          color: Colors.redAccent,
+                          child: Text(
+                            'SOBRE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/about');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          splashColor: Theme.of(context).primaryColor,
+                          color: Colors.white,
+                          child: Text(
+                            'JOGAR!',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/magic-numbers');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Dev with ',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(
+                          Icons.favorite,
+                          color: Colors.redAccent,
+                        ),
+                        Text(
+                          ' by Pedro Lacerda',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
