@@ -18,9 +18,25 @@ class Home extends StatelessWidget {
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              child: Text(
-                'Magic Numbers',
-                style: TextStyle(color: Colors.white),
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    'assets/images/hat.png',
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    'Magic Numbers',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'RugeBoogie',
+                      fontSize: 40.0,
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(

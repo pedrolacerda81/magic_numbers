@@ -7,6 +7,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Magic Numbers',
       theme: ThemeData(
+        fontFamily: 'VarelaRound',
         primarySwatch: Colors.deepPurple,
       ),
       onGenerateRoute: onGenerateRoute,
