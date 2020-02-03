@@ -6,9 +6,10 @@ class Home extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: <Color>[Colors.deepPurpleAccent, Colors.deepPurple]),
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: <Color>[Colors.deepPurpleAccent, Colors.deepPurple],
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
