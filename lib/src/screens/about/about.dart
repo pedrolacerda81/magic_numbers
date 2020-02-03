@@ -11,6 +11,14 @@ class About extends StatelessWidget {
     }
   }
 
+  Text _bioText(String text) {
+    return Text(
+      text,
+      style: TextStyle(fontSize: 18.0, color: Colors.grey),
+      textAlign: TextAlign.justify,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +46,8 @@ class About extends StatelessWidget {
                   alignment: Alignment.center,
                   children: <Widget>[
                     Container(
-                      height: 125.0,
-                      width: 125.0,
+                      height: 130.0,
+                      width: 130.0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
@@ -79,7 +87,21 @@ class About extends StatelessWidget {
             ),
           ),
           Container(
-            child: Text('hello.'),
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: Column(
+              children: <Widget>[
+                _bioText(
+                    'Olá, sou engenheiro da computação e desenvolvedor mobile usando essa maravilhosa framework.'),
+                SizedBox(height: 10.0),
+                _bioText(
+                    'A ideia deste simples jogo é divertir e também expor um pouco do meu trabalho como desenvolvedor.'),
+                SizedBox(height: 10.0),
+                _bioText(
+                    'Espero que você se divirta e, se gostar, você pode compartilhar com seus amigos e também dar uma olhada no meu GitHub.'),
+                SizedBox(height: 10.0),
+                _bioText('Mas só se você quiser :)')
+              ],
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -100,7 +122,6 @@ class About extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    print("pressed 'go to github' button!");
                     _launchGitHubUrl();
                   },
                 ),
