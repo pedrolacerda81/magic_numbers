@@ -68,6 +68,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "image",
       "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.4",
       "packageUri": "lib/",
@@ -102,6 +108,12 @@
       "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "quiver",
@@ -158,6 +170,30 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "url_launcher",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "url_launcher_macos",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "url_launcher_platform_interface",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_platform_interface-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "url_launcher_web",
+      "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/pedrolacerda/dev/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8",
       "packageUri": "lib/",
@@ -176,7 +212,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-02-03T13:47:40.664962Z",
+  "generated": "2020-02-03T15:38:50.475376Z",
   "generator": "pub",
   "generatorVersion": "2.7.0"
 }

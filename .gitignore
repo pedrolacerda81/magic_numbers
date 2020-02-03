@@ -88,3 +88,5 @@ lint/tmp/
 pubspec.lock
 .vscode
 .packages
+.flutter-plugins
+.flutter-plugins-dependencies
