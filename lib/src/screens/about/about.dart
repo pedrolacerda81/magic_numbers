@@ -92,13 +92,13 @@ class About extends StatelessWidget {
               children: <Widget>[
                 _bioText(
                     'Olá, sou engenheiro da computação e desenvolvedor mobile usando essa maravilhosa framework.'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 13.0),
                 _bioText(
                     'A ideia deste simples jogo é divertir e também expor um pouco do meu trabalho como desenvolvedor.'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 13.0),
                 _bioText(
                     'Espero que você se divirta e, se gostar, você pode compartilhar com seus amigos e também dar uma olhada no meu GitHub.'),
-                SizedBox(height: 10.0),
+                SizedBox(height: 13.0),
                 _bioText('Mas só se você quiser :)')
               ],
             ),

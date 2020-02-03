@@ -62,6 +62,7 @@ class Home extends StatelessWidget {
                       color: Colors.white,
                       fontFamily: 'RugeBoogie',
                       fontSize: 45.0,
+                      letterSpacing: 1.5,
                     ),
                   ),
                 ],
