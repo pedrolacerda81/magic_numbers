@@ -28,6 +28,16 @@ class Play extends StatelessWidget {
           ),
         ],
       ),
+      body: Container(
+        child: Center(
+          child: FlatButton(
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/abrakadabra');
+            },
+            child: Text('hello'),
+          ),
+        ),
+      ),
     );
   }
 }
