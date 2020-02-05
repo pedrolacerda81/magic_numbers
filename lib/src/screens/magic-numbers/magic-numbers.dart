@@ -78,7 +78,7 @@ class MagicNumbers extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      print('vamos la pressed');
+                      Navigator.pushReplacementNamed(context, '/play');
                     },
                   ),
                 ],

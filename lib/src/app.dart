@@ -35,6 +35,12 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings) {
     });
   }
 
+  if (settings.name == '/play') {
+    return MaterialPageRoute(builder: (BuildContext context) {
+      return Play();
+    });
+  }
+
   return MaterialPageRoute(builder: (BuildContext context) {
     return Home();
   });
