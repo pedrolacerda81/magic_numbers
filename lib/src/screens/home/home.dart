@@ -1,33 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  Container _buildHomeButton(String title, Color color, Color splashColor,
-      Color titleColor, Function onPressed) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            splashColor: splashColor,
-            color: color,
-            child: Text(
-              title,
-              style: TextStyle(
-                color: titleColor,
-                fontSize: 16.0,
-              ),
-            ),
-            onPressed: onPressed,
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,9 +26,7 @@ class Home extends StatelessWidget {
                     height: 95.0,
                     width: 95.0,
                   ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
+                  SizedBox(height: 10.0),
                   Text(
                     'Magic Numbers',
                     style: TextStyle(
@@ -71,21 +42,56 @@ class Home extends StatelessWidget {
             Container(
               child: Column(
                 children: <Widget>[
-                  _buildHomeButton(
-                      'SOBRE', Colors.redAccent, Colors.white, Colors.white,
-                      () {
-                    Navigator.pushNamed(context, '/about');
-                  }),
-                  _buildHomeButton(
-                      'JOGAR!',
-                      Colors.white,
-                      Theme.of(context).primaryColor,
-                      Theme.of(context).primaryColor, () {
-                    Navigator.pushNamed(context, '/magic-numbers');
-                  }),
-                  SizedBox(
-                    height: 10.0,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        OutlineButton(
+                          splashColor: Colors.white,
+                          child: Text(
+                            'SOBRE',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 16.0),
+                          ),
+                          borderSide: BorderSide(color: Colors.white),
+                          color: Colors.transparent,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/about');
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          splashColor: Theme.of(context).primaryColor,
+                          color: Colors.white,
+                          child: Text(
+                            'JOGAR!',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/magic-numbers');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
                   Container(
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
