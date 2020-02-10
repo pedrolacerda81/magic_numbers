@@ -13,20 +13,36 @@ class Play extends StatelessWidget {
     [57, 59, 61, 63]
   ];
 
-  TableRow getRow(List<int> row) {
-    List<Text> rowChildrens = [];
-
+  Container getRow(List<int> row) {
+    List<Widget> rowChildrens = [];
     row.forEach((num) {
-      rowChildrens.add(Text(num.toString()));
+      rowChildrens.add(
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          child: Text(
+            num.toString(),
+            style: TextStyle(
+              fontSize: 24.0,
+              letterSpacing: 0.5,
+              color: Colors.deepPurple[900],
+            ),
+          ),
+        ),
+      );
     });
 
-    return TableRow(
-      children: rowChildrens,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: rowChildrens,
+      ),
     );
   }
 
-  List<TableRow> getRows(List<List<int>> card) {
-    List<TableRow> rows = [];
+  List<Container> getRows(List<List<int>> card) {
+    List<Container> rows = [];
     card.forEach((row) {
       rows.add(getRow(row));
     });
@@ -50,7 +66,7 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              //TODO: reset the game...
+              //TODO: reset the game and change the Navigation to Play...
               Navigator.pushReplacementNamed(context, '/magic-numbers');
             },
             icon: Icon(
@@ -79,8 +95,20 @@ class Play extends StatelessWidget {
               ),
             ),
             Container(
-              child: Table(
-                children: getRows(card),
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[Colors.deepPurpleAccent, Colors.deepPurple],
+                  ),
+                ),
+                child: Column(
+                  children: getRows(card),
+                ),
               ),
             ),
           ],
