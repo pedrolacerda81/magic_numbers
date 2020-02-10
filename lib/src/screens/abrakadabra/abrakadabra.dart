@@ -15,7 +15,7 @@ class Abrakadabra extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
               alignment: Alignment.center,

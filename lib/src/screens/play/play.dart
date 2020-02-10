@@ -15,22 +15,24 @@ class Play extends StatelessWidget {
 
   Container getRow(List<int> row) {
     List<Widget> rowChildrens = [];
-    row.forEach((num) {
-      rowChildrens.add(
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Text(
-            num.toString(),
-            style: TextStyle(
-              fontSize: 24.0,
-              letterSpacing: 0.5,
-              color: Colors.deepPurple[900],
+    row.forEach(
+      (num) {
+        rowChildrens.add(
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Text(
+              num.toString(),
+              style: TextStyle(
+                fontSize: 24.0,
+                letterSpacing: 0.5,
+                color: Colors.deepPurple[900],
+              ),
             ),
           ),
-        ),
-      );
-    });
-
+        );
+      },
+    );
+    //TODO: remenber to random the numbers on the row
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5.0),
       child: Row(
@@ -46,6 +48,7 @@ class Play extends StatelessWidget {
     card.forEach((row) {
       rows.add(getRow(row));
     });
+    //TODO: remenber to random the rows on the rows list
     return rows;
   }
 
@@ -79,7 +82,7 @@ class Play extends StatelessWidget {
       body: Container(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
