@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Play extends StatelessWidget {
+  final bool memorizedNumber = false;
   final String text = 'Memorize um número';
+  //final String text = 'Seu número está aqui?';
   final List<List<int>> card = [
     [01, 03, 05, 07],
     [09, 11, 13, 15],
@@ -12,6 +14,16 @@ class Play extends StatelessWidget {
     [49, 51, 53, 55],
     [57, 59, 61, 63]
   ];
+  // final List<List<int>> card = [
+  //   [02, 03, 06, 07],
+  //   [10, 11, 14, 15],
+  //   [18, 19, 22, 23],
+  //   [26, 27, 30, 31],
+  //   [34, 35, 38, 39],
+  //   [42, 43, 46, 47],
+  //   [50, 51, 54, 55],
+  //   [58, 59, 62, 63]
+  // ];
 
   Container getRow(List<int> row) {
     List<Widget> rowChildrens = [];
@@ -50,6 +62,38 @@ class Play extends StatelessWidget {
     });
     //TODO: remenber to random the rows on the rows list
     return rows;
+  }
+
+  Container _buildPlayButtons(
+      String text, IconData icon, Color color, Function onPressed) {
+    return Container(
+      height: 50.0,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        splashColor: Colors.white,
+        color: color,
+        child: Row(
+          children: <Widget>[
+            Text(
+              text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            SizedBox(width: 5.0),
+            Icon(
+              icon,
+              size: 16.0,
+              color: Colors.white,
+            ),
+          ],
+        ),
+        onPressed: onPressed,
+      ),
+    );
   }
 
   @override
@@ -114,6 +158,47 @@ class Play extends StatelessWidget {
                 ),
               ),
             ),
+            !memorizedNumber
+                ? Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          splashColor: Colors.white,
+                          color: Colors.deepPurpleAccent,
+                          child: Text(
+                            'OK!',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          onPressed: () {
+                            //TODO: onPressed
+                          },
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        _buildPlayButtons(
+                            'SIM', Icons.check, Colors.deepPurpleAccent, () {}),
+                        _buildPlayButtons('NÃO', Icons.close, Colors.redAccent,
+                            () {
+                          Navigator.popAndPushNamed(context, '/abrakadabra');
+                        }),
+                      ],
+                    ),
+                  ),
           ],
         ),
       ),
