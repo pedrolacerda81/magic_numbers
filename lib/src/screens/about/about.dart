@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../widgets/widgets.dart';
 
 class About extends StatelessWidget {
   void _launchGitHubUrl() async {
@@ -103,30 +104,12 @@ class About extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  splashColor: Colors.white,
-                  color: Colors.deepPurpleAccent,
-                  child: Text(
-                    'GITHUB',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  onPressed: () {
-                    _launchGitHubUrl();
-                  },
-                ),
-              ],
-            ),
+          MagicNumbersButton(
+            title: 'GITHUB',
+            color: Colors.deepPurpleAccent,
+            titleColor: Colors.white,
+            splashColor: Colors.white,
+            onPressed: () => _launchGitHubUrl(),
           ),
         ],
       ),

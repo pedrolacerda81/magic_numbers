@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/widgets.dart';
 
 class Abrakadabra extends StatelessWidget {
   @override
@@ -64,31 +65,15 @@ class Abrakadabra extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    splashColor: Theme.of(context).primaryColor,
-                    color: Colors.white,
-                    child: Text(
-                      'DEMAIS!',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    onPressed: () {
-                      //TODO: end the game...
-                      Navigator.pushReplacementNamed(context, '/home');
-                    },
-                  ),
-                ],
-              ),
+            MagicNumbersButton(
+              title: 'DEMAIS!',
+              color: Colors.white,
+              titleColor: Theme.of(context).primaryColor,
+              splashColor: Theme.of(context).primaryColor,
+              onPressed: () {
+                //TODO: end the game...
+                Navigator.pushReplacementNamed(context, '/home');
+              },
             ),
           ],
         ),

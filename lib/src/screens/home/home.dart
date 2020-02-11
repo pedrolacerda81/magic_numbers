@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/widgets.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -66,30 +67,13 @@ class Home extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          splashColor: Theme.of(context).primaryColor,
-                          color: Colors.white,
-                          child: Text(
-                            'JOGAR!',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 16.0,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/magic-numbers');
-                          },
-                        ),
-                      ],
-                    ),
+                  MagicNumbersButton(
+                    title: 'JOGAR!',
+                    color: Colors.white,
+                    titleColor: Theme.of(context).primaryColor,
+                    splashColor: Theme.of(context).primaryColor,
+                    onPressed: () =>
+                        Navigator.pushNamed(context, '/magic-numbers'),
                   ),
                   SizedBox(height: 10.0),
                   Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/widgets.dart';
 
 class MagicNumbers extends StatelessWidget {
   Text _bioText(String text) {
@@ -59,30 +60,12 @@ class MagicNumbers extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    splashColor: Colors.white,
-                    color: Colors.deepPurpleAccent,
-                    child: Text(
-                      'VAMOS LÁ!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/play');
-                    },
-                  ),
-                ],
-              ),
+            MagicNumbersButton(
+              title: 'JOGAR!',
+              color: Colors.deepPurpleAccent,
+              titleColor: Colors.white,
+              splashColor: Colors.white,
+              onPressed: () => Navigator.pushReplacementNamed(context, '/play'),
             ),
           ],
         ),

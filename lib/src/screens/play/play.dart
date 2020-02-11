@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/widgets.dart';
 
 class Play extends StatelessWidget {
   final bool memorizedNumber = false;
@@ -159,30 +160,12 @@ class Play extends StatelessWidget {
               ),
             ),
             !memorizedNumber
-                ? Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          splashColor: Colors.white,
-                          color: Colors.deepPurpleAccent,
-                          child: Text(
-                            'OK!',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
-                            ),
-                          ),
-                          onPressed: () {
-                            //TODO: onPressed
-                          },
-                        ),
-                      ],
-                    ),
+                ? MagicNumbersButton(
+                    title: 'OK!',
+                    color: Colors.deepPurpleAccent,
+                    titleColor: Colors.white,
+                    splashColor: Colors.white,
+                    onPressed: () {},
                   )
                 : Container(
                     padding: EdgeInsets.symmetric(horizontal: 30.0),
