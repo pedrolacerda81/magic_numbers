@@ -115,7 +115,7 @@ class Play extends StatelessWidget {
           IconButton(
             onPressed: () {
               //TODO: reset the game and change the Navigation to Play...
-              Navigator.pushReplacementNamed(context, '/magic-numbers');
+              Navigator.pushReplacementNamed(context, '/play');
             },
             icon: Icon(
               Icons.refresh,
