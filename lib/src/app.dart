@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import './bloc/bloc.dart';
 import './screens/screens.dart';
 
 class App extends StatelessWidget {
@@ -37,7 +39,10 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings) {
 
   if (settings.name == '/play') {
     return MaterialPageRoute(builder: (BuildContext context) {
-      return Play();
+      return BlocProvider(
+        create: (BuildContext context) => MagicNumbersBloc(),
+        child: Play(),
+      );
     });
   }
 

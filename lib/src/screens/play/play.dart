@@ -1,69 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/bloc.dart';
 
 class Play extends StatelessWidget {
-  final bool memorizedNumber = false;
+  final bool memorizedNumber = true;
   final String text = 'Memorize um número';
-  //final String text = 'Seu número está aqui?';
-  final List<List<int>> card = [
-    [01, 03, 05, 07],
-    [09, 11, 13, 15],
-    [17, 19, 21, 23],
-    [25, 27, 29, 31],
-    [33, 35, 37, 39],
-    [41, 43, 45, 47],
-    [49, 51, 53, 55],
-    [57, 59, 61, 63]
-  ];
-  // final List<List<int>> card = [
-  //   [02, 03, 06, 07],
-  //   [10, 11, 14, 15],
-  //   [18, 19, 22, 23],
-  //   [26, 27, 30, 31],
-  //   [34, 35, 38, 39],
-  //   [42, 43, 46, 47],
-  //   [50, 51, 54, 55],
-  //   [58, 59, 62, 63]
-  // ];
-
-  Container getRow(List<int> row) {
-    List<Widget> rowChildrens = [];
-    row.forEach(
-      (num) {
-        rowChildrens.add(
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Text(
-              num.toString(),
-              style: TextStyle(
-                fontSize: 24.0,
-                letterSpacing: 0.5,
-                color: Colors.deepPurple[900],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-    //TODO: remenber to random the numbers on the row
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: rowChildrens,
-      ),
-    );
-  }
-
-  List<Container> getRows(List<List<int>> card) {
-    List<Container> rows = [];
-    card.forEach((row) {
-      rows.add(getRow(row));
-    });
-    //TODO: remenber to random the rows on the rows list
-    return rows;
-  }
 
   Container _buildPlayButtons(
       String text, IconData icon, Color color, Function onPressed) {
@@ -97,6 +39,31 @@ class Play extends StatelessWidget {
     );
   }
 
+  Container _buildCard(List<int> card) {
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(10.0),
+      child: Wrap(
+        //TODO: finish it...
+        spacing: 10.0,
+        runSpacing: 10.0,
+        children: card.map((num) {
+          return CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Text(
+              num.toString(),
+              style: TextStyle(
+                fontSize: 24.0,
+                letterSpacing: 0.5,
+                color: Colors.deepPurple[900],
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +81,7 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              //TODO: reset the game and change the Navigation to Play...
+              //TODO: reset the game...
               Navigator.pushReplacementNamed(context, '/play');
             },
             icon: Icon(
@@ -154,8 +121,14 @@ class Play extends StatelessWidget {
                     colors: <Color>[Colors.deepPurpleAccent, Colors.deepPurple],
                   ),
                 ),
-                child: Column(
-                  children: getRows(card),
+                child: BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
+                  builder: (BuildContext context, MagicNumbersState state) {
+                    if (state is MagicNumbersState) {
+                      return _buildCard(state.props);
+                    }
+                    //TODO: remove this...
+                    return Container();
+                  },
                 ),
               ),
             ),
