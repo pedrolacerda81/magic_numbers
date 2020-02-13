@@ -10,12 +10,26 @@ class MagicNumbersInitial extends MagicNumbersState {
     final int card = Random().nextInt(5);
     switch (card) {
       case 0:
-        return Card.one;
+        return Card.zero;
+        break;
       case 1:
-        return Card.two;
-      default:
         return Card.one;
-      //TODO: ...
+        break;
+      case 2:
+        return Card.two;
+        break;
+      case 3:
+        return Card.three;
+        break;
+      case 4:
+        return Card.four;
+        break;
+      case 5:
+        return Card.five;
+        break;
+      default:
+        return Card.zero;
+        break;
     }
   }
 }
