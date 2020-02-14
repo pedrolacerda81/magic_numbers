@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magic_numbers/src/widgets/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../widgets/widgets.dart';
 
 class About extends StatelessWidget {
   void _launchGitHubUrl() async {

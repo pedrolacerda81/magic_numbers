@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/bloc.dart';
+import 'package:magic_numbers/src/bloc/bloc.dart';
+import 'package:magic_numbers/src/widgets/widgets.dart';
 
 class Play extends StatelessWidget {
-  final bool memorizedNumber = true;
+  final bool memorizedNumber = false;
   final String text = 'Memorize um número';
 
   Container _buildPlayButtons(
@@ -44,7 +44,6 @@ class Play extends StatelessWidget {
       alignment: Alignment.center,
       padding: EdgeInsets.all(10.0),
       child: Wrap(
-        //TODO: finish it...
         spacing: 10.0,
         runSpacing: 10.0,
         children: card.map((num) {

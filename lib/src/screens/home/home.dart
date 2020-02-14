@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/widgets.dart';
+import 'package:magic_numbers/src/widgets/widgets.dart';
 
 class Home extends StatelessWidget {
   @override

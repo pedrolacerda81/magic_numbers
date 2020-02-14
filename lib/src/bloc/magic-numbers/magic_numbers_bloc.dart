@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import '../../models/card.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
+import 'package:magic_numbers/src/models/card.dart';
 part 'magic_numbers_event.dart';
 part 'magic_numbers_state.dart';
 
