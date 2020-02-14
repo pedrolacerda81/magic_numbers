@@ -10,7 +10,6 @@ class Play extends StatelessWidget {
   Container _buildPlayButtons(
       String text, IconData icon, Color color, Function onPressed) {
     return Container(
-      height: 50.0,
       child: RaisedButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -41,24 +40,27 @@ class Play extends StatelessWidget {
 
   Container _buildCard(List<int> card) {
     return Container(
+      width: 220.0,
       alignment: Alignment.center,
       padding: EdgeInsets.all(10.0),
       child: Wrap(
         spacing: 10.0,
         runSpacing: 10.0,
-        children: card.map((num) {
-          return CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Text(
-              num.toString(),
-              style: TextStyle(
-                fontSize: 24.0,
-                letterSpacing: 0.5,
-                color: Colors.deepPurple[900],
+        children: card.map(
+          (num) {
+            return CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Text(
+                num.toString(),
+                style: TextStyle(
+                  fontSize: 24.0,
+                  letterSpacing: 0.5,
+                  color: Colors.deepPurple[900],
+                ),
               ),
-            ),
-          );
-        }).toList(),
+            );
+          },
+        ).toList(),
       ),
     );
   }
@@ -109,6 +111,7 @@ class Play extends StatelessWidget {
               ),
             ),
             Container(
+              alignment: Alignment.center,
               padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
