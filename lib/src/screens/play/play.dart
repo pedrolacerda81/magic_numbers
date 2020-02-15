@@ -4,8 +4,7 @@ import 'package:magic_numbers/src/bloc/bloc.dart';
 import 'package:magic_numbers/src/widgets/widgets.dart';
 
 class Play extends StatelessWidget {
-  final bool memorizedNumber = false;
-  final String text = 'Memorize um número';
+  final bool memorizedNumber = true;
 
   Container _buildPlayButtons(
       String text, IconData icon, Color color, Function onPressed) {
@@ -40,12 +39,12 @@ class Play extends StatelessWidget {
 
   Container _buildCard(List<int> card) {
     return Container(
-      width: 220.0,
+      width: 250.0,
       alignment: Alignment.center,
       padding: EdgeInsets.all(10.0),
       child: Wrap(
-        spacing: 10.0,
-        runSpacing: 10.0,
+        spacing: 20.0,
+        runSpacing: 20.0,
         children: card.map(
           (num) {
             return CircleAvatar(
@@ -101,7 +100,9 @@ class Play extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 30.0),
               child: Text(
-                text,
+                !memorizedNumber
+                    ? 'Memorize um número'
+                    : 'Seu número está aqui?',
                 style: TextStyle(
                   fontFamily: 'RugeBoogie',
                   fontSize: 42.0,

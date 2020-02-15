@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:magic_numbers/src/models/card.dart';
+
 part 'magic_numbers_event.dart';
 part 'magic_numbers_state.dart';
 
@@ -14,6 +15,6 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
   Stream<MagicNumbersState> mapEventToState(
     MagicNumbersEvent event,
   ) async* {
-    // TODO: Add Logic
+    // TODO: Add Event Logics
   }
 }
