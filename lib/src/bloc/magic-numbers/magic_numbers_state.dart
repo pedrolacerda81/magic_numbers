@@ -33,3 +33,8 @@ class MagicNumbersInitial extends MagicNumbersState {
     }
   }
 }
+
+class MagicNumbersPlayingState extends MagicNumbersState {
+  @override
+  List<Object> get props => null;
+}

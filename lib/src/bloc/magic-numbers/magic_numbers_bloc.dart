@@ -12,9 +12,13 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
   MagicNumbersState get initialState => MagicNumbersInitial();
 
   @override
-  Stream<MagicNumbersState> mapEventToState(
-    MagicNumbersEvent event,
-  ) async* {
-    // TODO: Add Event Logics
+  Stream<MagicNumbersState> mapEventToState(MagicNumbersEvent event) async* {
+    if (event is MemorizedNumberEvent) {
+      yield* _mapMemorizedNumberEventToState(event);
+    }
+  }
+
+  Stream<MagicNumbersState> _mapMemorizedNumberEventToState(MagicNumbersEvent event) async* {
+    yield MagicNumbersPlayingState();
   }
 }

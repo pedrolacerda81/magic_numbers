@@ -13,7 +13,7 @@ class Play extends StatelessWidget {
     );
   }
 
-  Container _buildPlayButtons(
+  Container _buildPlayButton(
       String text, IconData icon, Color color, Function onPressed) {
     return Container(
       child: RaisedButton(
@@ -108,9 +108,15 @@ class Play extends StatelessWidget {
               padding: EdgeInsets.only(left: 30.0),
               child: BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
                 builder: (BuildContext context, MagicNumbersState state) {
-                  if (state is MagicNumbersState) {
+                  if (state is MagicNumbersInitial) {
                     return Text(
                       'Memorize um número',
+                      style: _titleTextStyle(),
+                    );
+                  }
+                  if (state is MagicNumbersPlayingState) {
+                    return Text(
+                      'Seu número está aqui?',
                       style: _titleTextStyle(),
                     );
                   }
@@ -136,10 +142,20 @@ class Play extends StatelessWidget {
                 ),
                 child: BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
                   builder: (BuildContext context, MagicNumbersState state) {
-                    if (state is MagicNumbersState) {
+                    if (state is MagicNumbersInitial) {
                       return _buildCard(state.props);
                     }
-                    //TODO: remove this...
+                    //TODO: add the cards flow HERE...
+                    if(state is MagicNumbersPlayingState) {
+                      Container(
+                        color: Colors.redAccent,
+                        width: 250.0,
+                        child: Center(
+                          child: Icon(
+                            Icons.close, color: Colors.white, size: 50.0,),
+                        ),
+                      );
+                    }
                     return Container(
                       color: Colors.redAccent,
                       width: 250.0,
@@ -153,13 +169,32 @@ class Play extends StatelessWidget {
             ),
             BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
               builder: (BuildContext context, MagicNumbersState state) {
-                if (state is MagicNumbersState) {
+                if (state is MagicNumbersInitial) {
                   return MagicNumbersButton(
                     title: 'OK!',
                     color: Colors.deepPurpleAccent,
                     titleColor: Colors.white,
                     splashColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      BlocProvider.of<MagicNumbersBloc>(context).add(MemorizedNumberEvent());
+                    },
+                  );
+                }
+                if (state is MagicNumbersPlayingState) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        _buildPlayButton(
+                            'SIM', Icons.check, Colors.deepPurpleAccent, () {}),
+                        _buildPlayButton('NÃO', Icons.close, Colors.redAccent,
+                            () {
+                          Navigator.popAndPushNamed(context, '/abrakadabra');
+                        }),
+                      ],
+                    ),
                   );
                 }
                 return MagicNumbersButton(
@@ -167,25 +202,12 @@ class Play extends StatelessWidget {
                   color: Colors.deepPurpleAccent,
                   titleColor: Colors.white,
                   splashColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    print('Erro nos estados da página de jogo.');
+                  },
                 );
               },
             ),
-//                Container(
-//                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-//                    child: Row(
-//                      mainAxisSize: MainAxisSize.max,
-//                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                      children: <Widget>[
-//                        _buildPlayButtons(
-//                            'SIM', Icons.check, Colors.deepPurpleAccent, () {}),
-//                        _buildPlayButtons('NÃO', Icons.close, Colors.redAccent,
-//                            () {
-//                          Navigator.popAndPushNamed(context, '/abrakadabra');
-//                        }),
-//                      ],
-//                    ),
-//                  ),
           ],
         ),
       ),
