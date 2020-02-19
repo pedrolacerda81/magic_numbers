@@ -46,12 +46,12 @@ class Play extends StatelessWidget {
 
   Container _buildCard(List<int> card) {
     return Container(
-      width: 250.0,
+      width: 210.0,
       alignment: Alignment.center,
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(3.0),
       child: Wrap(
-        spacing: 20.0,
-        runSpacing: 20.0,
+        spacing: 10.0,
+        runSpacing: 10.0,
         children: card.map(
           (num) {
             return CircleAvatar(
@@ -59,7 +59,7 @@ class Play extends StatelessWidget {
               child: Text(
                 num.toString(),
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   letterSpacing: 0.5,
                   color: Colors.deepPurple[900],
                 ),
