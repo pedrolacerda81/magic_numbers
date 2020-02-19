@@ -88,8 +88,7 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              //TODO: reset the game...
-              Navigator.pushReplacementNamed(context, '/play');
+              BlocProvider.of<MagicNumbersBloc>(context).add(ResetGameEvent());
             },
             icon: Icon(
               Icons.refresh,

@@ -16,9 +16,16 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
     if (event is MemorizedNumberEvent) {
       yield* _mapMemorizedNumberEventToState(event);
     }
+    if(event is ResetGameEvent) {
+      yield* _mapResetGameEventToState(event);
+    }
   }
 
   Stream<MagicNumbersState> _mapMemorizedNumberEventToState(MagicNumbersEvent event) async* {
     yield MagicNumbersPlayingState();
+  }
+
+  Stream<MagicNumbersState> _mapResetGameEventToState(MagicNumbersEvent event) async* {
+    yield MagicNumbersInitial();
   }
 }

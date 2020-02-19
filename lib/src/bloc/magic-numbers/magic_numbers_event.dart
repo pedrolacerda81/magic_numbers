@@ -8,3 +8,8 @@ class MemorizedNumberEvent extends MagicNumbersEvent {
   @override
   List<Object> get props => null;
 }
+
+class ResetGameEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
