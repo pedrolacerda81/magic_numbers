@@ -7,7 +7,7 @@ abstract class MagicNumbersState extends Equatable {
 class MagicNumbersInitial extends MagicNumbersState {
   @override
   List<int> get props {
-    final int card = Random().nextInt(5);
+    final int card = Random().nextInt(6);
     switch (card) {
       case 0:
         return Card.zero;

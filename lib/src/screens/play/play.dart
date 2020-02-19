@@ -146,18 +146,19 @@ class Play extends StatelessWidget {
                     }
                     //TODO: add the cards flow HERE...
                     if(state is MagicNumbersPlayingState) {
-                      Container(
-                        color: Colors.redAccent,
+                      return Container(
                         width: 250.0,
+                        height: 200.0,
                         child: Center(
                           child: Icon(
                             Icons.close, color: Colors.white, size: 50.0,),
-                        ),
+                        )
                       );
                     }
                     return Container(
                       color: Colors.redAccent,
                       width: 250.0,
+                      height: 200.0,
                       child: Center(
                         child: Icon(Icons.close, color: Colors.white),
                       ),
