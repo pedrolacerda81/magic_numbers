@@ -45,6 +45,7 @@ class Play extends StatelessWidget {
   }
 
   Container _buildCard(List<int> card) {
+    List<int> shuffledCard = card.toList()..shuffle();
     return Container(
       width: 210.0,
       alignment: Alignment.center,
@@ -52,7 +53,7 @@ class Play extends StatelessWidget {
       child: Wrap(
         spacing: 10.0,
         runSpacing: 10.0,
-        children: card.map(
+        children: shuffledCard.map(
           (num) {
             return CircleAvatar(
               backgroundColor: Colors.white,
