@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:magic_numbers/src/widgets/widgets.dart';
 
 class Abrakadabra extends StatelessWidget {
+  Abrakadabra({@required this.result});
+  final int result;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +48,7 @@ class Abrakadabra extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    '31',
+                    result.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'RugeBoogie',

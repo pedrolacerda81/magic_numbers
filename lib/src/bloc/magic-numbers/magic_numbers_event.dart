@@ -4,12 +4,37 @@ abstract class MagicNumbersEvent extends Equatable {
   const MagicNumbersEvent();
 }
 
-class MemorizedNumberEvent extends MagicNumbersEvent {
+class ResetGameEvent extends MagicNumbersEvent {
   @override
   List<Object> get props => null;
 }
 
-class ResetGameEvent extends MagicNumbersEvent {
+class CheckZeroEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
+
+class CheckOneEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
+
+class CheckTwoEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
+
+class CheckThreeEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
+
+class CheckFourEvent extends MagicNumbersEvent {
+  @override
+  List<Object> get props => null;
+}
+
+class CheckFiveEvent extends MagicNumbersEvent {
   @override
   List<Object> get props => null;
 }

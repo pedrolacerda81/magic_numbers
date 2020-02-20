@@ -34,7 +34,32 @@ class MagicNumbersInitial extends MagicNumbersState {
   }
 }
 
-class MagicNumbersPlayingState extends MagicNumbersState {
+class CheckingZeroState extends MagicNumbersState {
   @override
-  List<Object> get props => null;
+  List<int> get props => Card.zero;
+}
+
+class CheckingOneState extends MagicNumbersState {
+  @override
+  List<int> get props => Card.one;
+}
+
+class CheckingTwoState extends MagicNumbersState {
+  @override
+  List<int> get props => Card.two;
+}
+
+class CheckingThreeState extends MagicNumbersState {
+  @override
+  List<int> get props => Card.three;
+}
+
+class CheckingFourState extends MagicNumbersState {
+  @override
+  List<int> get props => Card.four;
+}
+
+class CheckingFiveState extends MagicNumbersState {
+  @override
+  List<int> get props => Card.five;
 }

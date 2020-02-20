@@ -44,8 +44,23 @@ class Play extends StatelessWidget {
     );
   }
 
+  Container _buildPlayButtonsRow(
+      {Function onPressedYes, VoidCallback onPressedNo}) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          _buildPlayButton(
+              'SIM', Icons.check, Colors.deepPurpleAccent, onPressedYes),
+          _buildPlayButton('NÃO', Icons.close, Colors.redAccent, onPressedNo),
+        ],
+      ),
+    );
+  }
+
   Container _buildCard(List<int> card) {
-    List<int> shuffledCard = card.toList()..shuffle();
     return Container(
       width: 210.0,
       alignment: Alignment.center,
@@ -53,7 +68,7 @@ class Play extends StatelessWidget {
       child: Wrap(
         spacing: 10.0,
         runSpacing: 10.0,
-        children: shuffledCard.map(
+        children: card.map(
           (num) {
             return CircleAvatar(
               backgroundColor: Colors.white,
@@ -114,7 +129,12 @@ class Play extends StatelessWidget {
                       style: _titleTextStyle(),
                     );
                   }
-                  if (state is MagicNumbersPlayingState) {
+                  if (state is CheckingZeroState ||
+                      state is CheckingOneState ||
+                      state is CheckingTwoState ||
+                      state is CheckingThreeState ||
+                      state is CheckingFourState ||
+                      state is CheckingFiveState) {
                     return Text(
                       'Seu número está aqui?',
                       style: _titleTextStyle(),
@@ -143,21 +163,17 @@ class Play extends StatelessWidget {
                 child: BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
                   builder: (BuildContext context, MagicNumbersState state) {
                     if (state is MagicNumbersInitial) {
+                      return _buildCard(state.props.toList()..shuffle());
+                    }
+                    if (state is CheckingZeroState ||
+                        state is CheckingOneState ||
+                        state is CheckingTwoState ||
+                        state is CheckingThreeState ||
+                        state is CheckingFourState ||
+                        state is CheckingFiveState) {
                       return _buildCard(state.props);
                     }
-                    //TODO: add the cards flow HERE...
-                    if(state is MagicNumbersPlayingState) {
-                      return Container(
-                        width: 250.0,
-                        height: 200.0,
-                        child: Center(
-                          child: Icon(
-                            Icons.close, color: Colors.white, size: 50.0,),
-                        )
-                      );
-                    }
                     return Container(
-                      color: Colors.redAccent,
                       width: 250.0,
                       height: 200.0,
                       child: Center(
@@ -177,26 +193,78 @@ class Play extends StatelessWidget {
                     titleColor: Colors.white,
                     splashColor: Colors.white,
                     onPressed: () {
-                      BlocProvider.of<MagicNumbersBloc>(context).add(MemorizedNumberEvent());
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckZeroEvent());
                     },
                   );
                 }
-                if (state is MagicNumbersPlayingState) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        _buildPlayButton(
-                            'SIM', Icons.check, Colors.deepPurpleAccent, () {}),
-                        _buildPlayButton('NÃO', Icons.close, Colors.redAccent,
-                            () {
-                          Navigator.popAndPushNamed(context, '/abrakadabra');
-                        }),
-                      ],
-                    ),
+                if (state is CheckingZeroState) {
+                  return _buildPlayButtonsRow(
+                    onPressedYes: () {
+                      //TODO: n1 add to result...
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckOneEvent());
+                    },
+                    onPressedNo: () =>
+                        BlocProvider.of<MagicNumbersBloc>(context)
+                            .add(CheckOneEvent()),
                   );
+                }
+                if (state is CheckingOneState) {
+                  return _buildPlayButtonsRow(
+                    onPressedYes: () {
+                      //TODO: n1 add to result...
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckTwoEvent());
+                    },
+                    onPressedNo: () =>
+                        BlocProvider.of<MagicNumbersBloc>(context)
+                            .add(CheckTwoEvent()),
+                  );
+                }
+                if (state is CheckingTwoState) {
+                  return _buildPlayButtonsRow(
+                    onPressedYes: () {
+                      //TODO: n1 add to result...
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckThreeEvent());
+                    },
+                    onPressedNo: () =>
+                        BlocProvider.of<MagicNumbersBloc>(context)
+                            .add(CheckThreeEvent()),
+                  );
+                }
+                if (state is CheckingThreeState) {
+                  return _buildPlayButtonsRow(
+                    onPressedYes: () {
+                      //TODO: n1 add to result...
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckFourEvent());
+                    },
+                    onPressedNo: () =>
+                        BlocProvider.of<MagicNumbersBloc>(context)
+                            .add(CheckFourEvent()),
+                  );
+                }
+                if (state is CheckingFourState) {
+                  return _buildPlayButtonsRow(
+                    onPressedYes: () {
+                      //TODO: n1 add to result...
+                      BlocProvider.of<MagicNumbersBloc>(context)
+                          .add(CheckFiveEvent());
+                    },
+                    onPressedNo: () =>
+                        BlocProvider.of<MagicNumbersBloc>(context)
+                            .add(CheckFiveEvent()),
+                  );
+                }
+                if (state is CheckingFiveState) {
+                  return _buildPlayButtonsRow(onPressedYes: () {
+                    //TODO: n1 add to result...
+                    //TODO: Navigate to abrakadabra...
+                  }, onPressedNo: () {
+                    //TODO: Navigate to abrakadabra...
+                  });
                 }
                 return MagicNumbersButton(
                   title: 'Entendo :(',
