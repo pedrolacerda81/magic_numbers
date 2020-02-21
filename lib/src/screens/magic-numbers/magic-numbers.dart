@@ -61,7 +61,7 @@ class MagicNumbers extends StatelessWidget {
               ),
             ),
             MagicNumbersButton(
-              title: 'JOGAR!',
+              title: 'VAMOS LÁ!',
               color: Colors.deepPurpleAccent,
               titleColor: Colors.white,
               splashColor: Colors.white,

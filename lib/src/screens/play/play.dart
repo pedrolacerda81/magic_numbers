@@ -104,8 +104,8 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              final int result = 0;
-              BlocProvider.of<MagicNumbersBloc>(context).add(ResetGameEvent(result: result));
+              BlocProvider.of<MagicNumbersBloc>(context)
+                  .add(ResetGameEvent());
             },
             icon: Icon(
               Icons.refresh,
@@ -260,9 +260,12 @@ class Play extends StatelessWidget {
                 if (state is CheckingFiveState) {
                   return _buildPlayButtonsRow(onPressedYes: () {
                     final int result = state.result + state.card.first;
-                    Navigator.pushReplacementNamed(context, '/abrakadabra', arguments: result);
+                    Navigator.pushReplacementNamed(context, '/abrakadabra',
+                        arguments: result);
                   }, onPressedNo: () {
-                    Navigator.pushReplacementNamed(context, '/abrakadabra', arguments: state.result);                  });
+                    Navigator.pushReplacementNamed(context, '/abrakadabra',
+                        arguments: state.result);
+                  });
                 }
                 return MagicNumbersButton(
                   title: 'Entendo :(',

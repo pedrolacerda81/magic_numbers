@@ -5,8 +5,6 @@ abstract class MagicNumbersEvent extends Equatable {
 }
 
 class ResetGameEvent extends MagicNumbersEvent {
-  final int result;
-  ResetGameEvent({@required this.result});
   @override
   List<Object> get props => null;
 }
