@@ -73,7 +73,6 @@ class Abrakadabra extends StatelessWidget {
               titleColor: Theme.of(context).primaryColor,
               splashColor: Theme.of(context).primaryColor,
               onPressed: () {
-                //TODO: end the game...
                 Navigator.pushReplacementNamed(context, '/home');
               },
             ),

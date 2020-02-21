@@ -104,6 +104,7 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+              //TODO: verify why isn't this refreshing the game...
               BlocProvider.of<MagicNumbersBloc>(context)
                   .add(ResetGameEvent());
             },
