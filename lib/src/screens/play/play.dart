@@ -104,7 +104,8 @@ class Play extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              BlocProvider.of<MagicNumbersBloc>(context).add(ResetGameEvent());
+              final int result = 0;
+              BlocProvider.of<MagicNumbersBloc>(context).add(ResetGameEvent(result: result));
             },
             icon: Icon(
               Icons.refresh,
@@ -162,16 +163,14 @@ class Play extends StatelessWidget {
                 ),
                 child: BlocBuilder<MagicNumbersBloc, MagicNumbersState>(
                   builder: (BuildContext context, MagicNumbersState state) {
-                    if (state is MagicNumbersInitial) {
-                      return _buildCard(state.props.toList()..shuffle());
-                    }
-                    if (state is CheckingZeroState ||
+                    if (state is MagicNumbersInitial ||
+                        state is CheckingZeroState ||
                         state is CheckingOneState ||
                         state is CheckingTwoState ||
                         state is CheckingThreeState ||
                         state is CheckingFourState ||
                         state is CheckingFiveState) {
-                      return _buildCard(state.props);
+                      return _buildCard(state.card.toList()..shuffle());
                     }
                     return Container(
                       width: 250.0,
@@ -201,70 +200,69 @@ class Play extends StatelessWidget {
                 if (state is CheckingZeroState) {
                   return _buildPlayButtonsRow(
                     onPressedYes: () {
-                      //TODO: n1 add to result...
+                      final int result = state.result + state.card.first;
                       BlocProvider.of<MagicNumbersBloc>(context)
-                          .add(CheckOneEvent());
+                          .add(CheckOneEvent(result: result));
                     },
                     onPressedNo: () =>
                         BlocProvider.of<MagicNumbersBloc>(context)
-                            .add(CheckOneEvent()),
+                            .add(CheckOneEvent(result: state.result)),
                   );
                 }
                 if (state is CheckingOneState) {
                   return _buildPlayButtonsRow(
                     onPressedYes: () {
-                      //TODO: n1 add to result...
+                      final int result = state.result + state.card.first;
                       BlocProvider.of<MagicNumbersBloc>(context)
-                          .add(CheckTwoEvent());
+                          .add(CheckTwoEvent(result: result));
                     },
                     onPressedNo: () =>
                         BlocProvider.of<MagicNumbersBloc>(context)
-                            .add(CheckTwoEvent()),
+                            .add(CheckTwoEvent(result: state.result)),
                   );
                 }
                 if (state is CheckingTwoState) {
                   return _buildPlayButtonsRow(
                     onPressedYes: () {
-                      //TODO: n1 add to result...
+                      final int result = state.result + state.card.first;
                       BlocProvider.of<MagicNumbersBloc>(context)
-                          .add(CheckThreeEvent());
+                          .add(CheckThreeEvent(result: result));
                     },
                     onPressedNo: () =>
                         BlocProvider.of<MagicNumbersBloc>(context)
-                            .add(CheckThreeEvent()),
+                            .add(CheckThreeEvent(result: state.result)),
                   );
                 }
                 if (state is CheckingThreeState) {
                   return _buildPlayButtonsRow(
                     onPressedYes: () {
-                      //TODO: n1 add to result...
+                      final int result = state.result + state.card.first;
                       BlocProvider.of<MagicNumbersBloc>(context)
-                          .add(CheckFourEvent());
+                          .add(CheckFourEvent(result: result));
                     },
                     onPressedNo: () =>
                         BlocProvider.of<MagicNumbersBloc>(context)
-                            .add(CheckFourEvent()),
+                            .add(CheckFourEvent(result: state.result)),
                   );
                 }
                 if (state is CheckingFourState) {
                   return _buildPlayButtonsRow(
                     onPressedYes: () {
-                      //TODO: n1 add to result...
+                      final int result = state.result + state.card.first;
                       BlocProvider.of<MagicNumbersBloc>(context)
-                          .add(CheckFiveEvent());
+                          .add(CheckFiveEvent(result: result));
                     },
                     onPressedNo: () =>
                         BlocProvider.of<MagicNumbersBloc>(context)
-                            .add(CheckFiveEvent()),
+                            .add(CheckFiveEvent(result: state.result)),
                   );
                 }
                 if (state is CheckingFiveState) {
                   return _buildPlayButtonsRow(onPressedYes: () {
-                    //TODO: n1 add to result...
-                    //TODO: Navigate to abrakadabra...
+                    final int result = state.result + state.card.first;
+                    Navigator.pushReplacementNamed(context, '/abrakadabra', arguments: result);
                   }, onPressedNo: () {
-                    //TODO: Navigate to abrakadabra...
-                  });
+                    Navigator.pushReplacementNamed(context, '/abrakadabra', arguments: state.result);                  });
                 }
                 return MagicNumbersButton(
                   title: 'Entendo :(',

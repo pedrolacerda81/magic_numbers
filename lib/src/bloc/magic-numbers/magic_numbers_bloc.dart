@@ -2,18 +2,49 @@ import 'dart:async';
 import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:magic_numbers/src/models/card.dart';
 
 part 'magic_numbers_event.dart';
 part 'magic_numbers_state.dart';
 
 class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
+  final int randomCardNumber = Random().nextInt(6);
+  final int resultInitial = 0;
+
+  List<int> _getCard(int cardNumber) {
+    switch (cardNumber) {
+      case 0:
+        return Card.zero;
+        break;
+      case 1:
+        return Card.one;
+        break;
+      case 2:
+        return Card.two;
+        break;
+      case 3:
+        return Card.three;
+        break;
+      case 4:
+        return Card.four;
+        break;
+      case 5:
+        return Card.five;
+        break;
+      default:
+        return Card.zero;
+        break;
+    }
+  }
+
   @override
-  MagicNumbersState get initialState => MagicNumbersInitial();
+  MagicNumbersState get initialState =>
+      MagicNumbersInitial(card: _getCard(randomCardNumber));
 
   @override
   Stream<MagicNumbersState> mapEventToState(MagicNumbersEvent event) async* {
-    if(event is ResetGameEvent) {
+    if (event is ResetGameEvent) {
       yield* _mapResetGameEventToState(event);
     }
     if (event is CheckZeroEvent) {
@@ -36,31 +67,38 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
     }
   }
 
-  Stream<MagicNumbersState> _mapResetGameEventToState(MagicNumbersEvent event) async* {
-    yield MagicNumbersInitial();
+  Stream<MagicNumbersState> _mapResetGameEventToState(
+      ResetGameEvent event) async* {
+    yield MagicNumbersInitial(card: _getCard(randomCardNumber));
   }
 
-  Stream<MagicNumbersState> _mapCheckZeroEventToState(MagicNumbersEvent event) async* {
-    yield CheckingZeroState();
+  Stream<MagicNumbersState> _mapCheckZeroEventToState(
+      CheckZeroEvent event) async* {
+    yield CheckingZeroState(card: Card.zero, result: resultInitial);
   }
 
-  Stream<MagicNumbersState> _mapCheckOneEventToState(MagicNumbersEvent event) async* {
-    yield CheckingOneState();
+  Stream<MagicNumbersState> _mapCheckOneEventToState(
+      CheckOneEvent event) async* {
+    yield CheckingOneState(card: Card.one, result: event.result);
   }
 
-  Stream<MagicNumbersState> _mapCheckTwoEventToState(MagicNumbersEvent event) async* {
-    yield CheckingTwoState();
+  Stream<MagicNumbersState> _mapCheckTwoEventToState(
+      CheckTwoEvent event) async* {
+    yield CheckingTwoState(card: Card.two, result: event.result);
   }
 
-  Stream<MagicNumbersState> _mapCheckThreeEventToState(MagicNumbersEvent event) async* {
-    yield CheckingThreeState();
+  Stream<MagicNumbersState> _mapCheckThreeEventToState(
+      CheckThreeEvent event) async* {
+    yield CheckingThreeState(card: Card.three, result: event.result);
   }
 
-  Stream<MagicNumbersState> _mapCheckFourEventToState(MagicNumbersEvent event) async* {
-    yield CheckingFourState();
+  Stream<MagicNumbersState> _mapCheckFourEventToState(
+      CheckFourEvent event) async* {
+    yield CheckingFourState(card: Card.four, result: event.result);
   }
 
-  Stream<MagicNumbersState> _mapCheckFiveEventToState(MagicNumbersEvent event) async* {
-    yield CheckingFiveState();
+  Stream<MagicNumbersState> _mapCheckFiveEventToState(
+      CheckFiveEvent event) async* {
+    yield CheckingFiveState(card: Card.five, result: event.result);
   }
 }

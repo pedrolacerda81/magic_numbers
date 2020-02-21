@@ -1,65 +1,61 @@
 part of 'magic_numbers_bloc.dart';
 
 abstract class MagicNumbersState extends Equatable {
-  const MagicNumbersState();
+  final List<int> card;
+  const MagicNumbersState({@required this.card});
 }
 
 class MagicNumbersInitial extends MagicNumbersState {
+  final List<int> card;
+  MagicNumbersInitial({@required this.card});
   @override
-  List<int> get props {
-    final int card = Random().nextInt(6);
-    switch (card) {
-      case 0:
-        return Card.zero;
-        break;
-      case 1:
-        return Card.one;
-        break;
-      case 2:
-        return Card.two;
-        break;
-      case 3:
-        return Card.three;
-        break;
-      case 4:
-        return Card.four;
-        break;
-      case 5:
-        return Card.five;
-        break;
-      default:
-        return Card.zero;
-        break;
-    }
-  }
+  List<int> get props => null;
 }
 
 class CheckingZeroState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingZeroState({@required this.card, this.result});
   @override
-  List<int> get props => Card.zero;
+  List<int> get props => null;
 }
 
 class CheckingOneState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingOneState({@required this.card, this.result});
   @override
-  List<int> get props => Card.one;
+  List<int> get props => null;
 }
 
 class CheckingTwoState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingTwoState({@required this.card, this.result});
   @override
-  List<int> get props => Card.two;
+  List<int> get props => null;
 }
 
 class CheckingThreeState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingThreeState({@required this.card, this.result});
   @override
-  List<int> get props => Card.three;
+  List<int> get props => null;
 }
 
 class CheckingFourState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingFourState({@required this.card, this.result});
   @override
-  List<int> get props => Card.four;
+  List<int> get props => null;
 }
 
 class CheckingFiveState extends MagicNumbersState {
+  final List<int> card;
+  final int result;
+  CheckingFiveState({@required this.card, this.result});
   @override
-  List<int> get props => Card.five;
+  List<int> get props => null;
 }

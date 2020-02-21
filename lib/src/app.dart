@@ -48,7 +48,7 @@ MaterialPageRoute onGenerateRoute(RouteSettings settings) {
 
   if (settings.name == '/abrakadabra') {
     return MaterialPageRoute(builder: (BuildContext context) {
-      return Abrakadabra();
+      return Abrakadabra(result: settings.arguments,);
     });
   }
 
