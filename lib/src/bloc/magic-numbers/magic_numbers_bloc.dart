@@ -9,9 +9,6 @@ part 'magic_numbers_event.dart';
 part 'magic_numbers_state.dart';
 
 class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
-  final int randomCardNumber = Random().nextInt(6);
-  final int resultInitial = 0;
-
   List<int> _getCard(int cardNumber) {
     switch (cardNumber) {
       case 0:
@@ -40,7 +37,7 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
 
   @override
   MagicNumbersState get initialState =>
-      MagicNumbersInitial(card: _getCard(randomCardNumber));
+      MagicNumbersInitial(card: _getCard(Random().nextInt(6)));
 
   @override
   Stream<MagicNumbersState> mapEventToState(MagicNumbersEvent event) async* {
@@ -69,12 +66,13 @@ class MagicNumbersBloc extends Bloc<MagicNumbersEvent, MagicNumbersState> {
 
   Stream<MagicNumbersState> _mapResetGameEventToState(
       ResetGameEvent event) async* {
-    yield MagicNumbersInitial(card: _getCard(randomCardNumber));
+    yield MagicNumbersInitial(card: _getCard(Random().nextInt(6)));
   }
 
   Stream<MagicNumbersState> _mapCheckZeroEventToState(
       CheckZeroEvent event) async* {
-    yield CheckingZeroState(card: Card.zero, result: resultInitial);
+    final int initialResult = 0;
+    yield CheckingZeroState(card: Card.zero, result: initialResult);
   }
 
   Stream<MagicNumbersState> _mapCheckOneEventToState(
