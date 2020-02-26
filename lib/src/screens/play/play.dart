@@ -105,6 +105,8 @@ class Play extends StatelessWidget {
           IconButton(
             onPressed: () {
               //TODO: verify why isn't this refreshing the game on Android...
+              //TODO: re-do random numbers...
+              //TODO: change order...
               BlocProvider.of<MagicNumbersBloc>(context)
                   .add(ResetGameEvent());
             },
@@ -171,7 +173,8 @@ class Play extends StatelessWidget {
                         state is CheckingThreeState ||
                         state is CheckingFourState ||
                         state is CheckingFiveState) {
-                      return _buildCard(state.card.toList()..shuffle());
+                      //return _buildCard(state.card.toList()..shuffle());
+                      return _buildCard((state.card));
                     }
                     return Container(
                       width: 250.0,
