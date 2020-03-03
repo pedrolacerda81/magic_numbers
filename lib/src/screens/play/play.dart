@@ -93,9 +93,7 @@ class Play extends StatelessWidget {
       appBar: AppBar(
         title: Text('Magic Numbers'),
         leading: IconButton(
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/home');
-          },
+          onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
           icon: Icon(
             Icons.close,
             color: Colors.white,
@@ -103,13 +101,10 @@ class Play extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () {
-              //TODO: verify why isn't this refreshing the game on Android...
-              //TODO: re-do random numbers...
-              //TODO: change order...
-              BlocProvider.of<MagicNumbersBloc>(context)
-                  .add(ResetGameEvent());
-            },
+            onPressed: () => BlocProvider.of<MagicNumbersBloc>(context)
+                .add(ResetGameEvent()),
+            //TODO: verify why isn't this refreshing the game on Android...
+            //try to pass a new random number
             icon: Icon(
               Icons.refresh,
               color: Colors.white,
@@ -173,8 +168,7 @@ class Play extends StatelessWidget {
                         state is CheckingThreeState ||
                         state is CheckingFourState ||
                         state is CheckingFiveState) {
-                      //return _buildCard(state.card.toList()..shuffle());
-                      return _buildCard((state.card));
+                      return _buildCard(state.card.toList()..shuffle());
                     }
                     return Container(
                       width: 250.0,
