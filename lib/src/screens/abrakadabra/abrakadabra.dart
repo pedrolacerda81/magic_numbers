@@ -48,7 +48,7 @@ class Abrakadabra extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    result.toString(),
+                    result == 0 ? 'Hm...' : result.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'RugeBoogie',
@@ -58,7 +58,9 @@ class Abrakadabra extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    'É o seu número!',
+                    result == 0
+                        ? 'Acho que você não escolheu número algum.'
+                        : 'É o seu número!',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,

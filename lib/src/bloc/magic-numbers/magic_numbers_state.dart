@@ -9,7 +9,7 @@ class MagicNumbersInitial extends MagicNumbersState {
   final List<int> card;
   MagicNumbersInitial({@required this.card});
   @override
-  List<int> get props => null;
+  List<int> get props => card;
 }
 
 class CheckingZeroState extends MagicNumbersState {
