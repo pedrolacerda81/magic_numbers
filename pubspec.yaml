@@ -25,10 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   url_launcher: ^5.4.1
   flutter_native_splash: ^0.1.9
-  bloc: ^3.0.0
-  flutter_bloc: ^3.2.0
-  equatable: ^1.1.0
+  bloc: ^4.0.0
+  flutter_bloc: ^4.0.0
+  equatable: ^1.1.1
   rxdart: ^0.23.1
+  font_awesome_flutter: ^8.8.1
 
 dev_dependencies:
   flutter_test:
