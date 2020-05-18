@@ -103,8 +103,6 @@ class Play extends StatelessWidget {
           IconButton(
             onPressed: () => BlocProvider.of<MagicNumbersBloc>(context)
                 .add(ResetGameEvent()),
-            //TODO: verify why isn't this refreshing the game on Android...
-            //TODO: try to pass a new random number
             icon: Icon(
               Icons.refresh,
               color: Colors.white,
